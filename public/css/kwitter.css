@@ -7,4 +7,9 @@ body{
     height: 6vh;
     margin-top: 5vh;
     text-align: center;
+    line-height: 6vh;
+}
+
+a{
+    display: contents;
 }

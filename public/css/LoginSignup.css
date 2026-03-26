@@ -1,0 +1,42 @@
+body, html{
+    background-color: #483748 !important;
+    margin: 0;
+    height: 100%;
+}
+a:link{
+    text-decoration: none;
+    color: black;
+}
+a:visited{
+    text-decoration: none;
+    color:black;
+}
+input{
+    background-color: #876687;
+    border: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: block;
+}
+input::placeholder{
+    color: black;
+}
+.LogCont{
+    height: auto;
+    line-height: 200%;
+    margin: auto;
+    width: 400px;
+    background-color: #634C63;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.Space{
+    height: 5vh;
+}
