@@ -1,15 +1,20 @@
 body{
-    background-color: #23223D;
+    background-color: #23223D !important;
 }
 .sidbtn{
-    background-color: #231B35;
+    background-color: #231B35 !important;
     width: 20vh;
     height: 6vh;
     margin-top: 5vh;
     text-align: center;
     line-height: 6vh;
+    border-radius: 10px;
 }
 
 a{
     display: contents;
+    color: mediumaquamarine;
+}
+a:active{
+    color: greenyellow;
 }

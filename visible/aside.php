@@ -8,11 +8,11 @@
 <body>
     <aside>
         <a href="threads.php"><div id="logo">Logo</div></a>
-        <a href="threads.php"><div class="sidbtn">THREADS</div></a>
-        <a href="search.php"><div class="sidbtn">SEARCH</div></a>
-        <a href="follow.php"><div class="sidbtn">FOLLOW</div></a>
-        <a href="profile.php"><div class="sidbtn">PROFILE</div></a>
-        <a href="settings.php"><div class="sidbtn">SETTINGS</div></a>
+        <a href="threads.php">  <div class="sidbtn text-info">🏠︎Threads</div></a>
+        <a href="search.php">   <div class="sidbtn text-info">🔎︎Search</div></a>
+        <a href="follow.php">   <div class="sidbtn text-info">🗣Follow</div></a>
+        <a href="profile.php">  <div class="sidbtn text-info">☻Profile</div></a>
+        <a href="settings.php"> <div class="sidbtn text-info">⛭Settings</div></a>
     </aside>
 </body>
 </html>

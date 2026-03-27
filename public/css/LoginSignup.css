@@ -1,18 +1,17 @@
 body, html{
-    background-color: #483748 !important;
+    background-color: #23223D !important;
     margin: 0;
     height: 100%;
+    color: mediumturquoise;
 }
 a:link{
     text-decoration: none;
-    color: black;
 }
 a:visited{
     text-decoration: none;
-    color:black;
 }
 input{
-    background-color: #876687;
+    background-color: #1E3447;
     border: 0;
     margin-left: auto;
     margin-right: auto;
@@ -21,14 +20,14 @@ input{
     display: block;
 }
 input::placeholder{
-    color: black;
+    color: gray;
 }
 .LogCont{
     height: auto;
     line-height: 200%;
     margin: auto;
     width: 400px;
-    background-color: #634C63;
+    background-color: #142135;
 }
 .container{
     display: flex;
