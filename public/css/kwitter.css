@@ -1,0 +1,30 @@
+body{
+    background-color: #23223D !important;
+    overflow: hidden;
+}
+.sidbtn{
+    background-color: #231B35 !important;
+    width: 20vh;
+    height: 6vh;
+    margin-top: 5vh;
+    text-align: center;
+    line-height: 6vh;
+    border-radius: 10px;
+}
+
+a{
+    display: contents;
+    color: mediumaquamarine;
+}
+a:active{
+    color: greenyellow;
+}
+.Bio{
+    background-color: #1E3447 !important;
+}
+.Searchbar{
+    background-color: #1E3447 !important;
+    margin-top: 15vh !important;
+    line-height: 10vh;
+    color: #f8f9fa;
+}

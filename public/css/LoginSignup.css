@@ -1,0 +1,41 @@
+body, html{
+    background-color: #23223D !important;
+    margin: 0;
+    height: 100%;
+    color: mediumturquoise;
+}
+a:link{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+input{
+    background-color: #1E3447;
+    border: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: block;
+}
+input::placeholder{
+    color: gray;
+}
+.LogCont{
+    height: auto;
+    line-height: 200%;
+    margin: auto;
+    width: 400px;
+    background-color: #142135;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.Space{
+    height: 5vh;
+}
