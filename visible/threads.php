@@ -1,10 +1,14 @@
 <?php
 session_start();
+require_once("../database/db.php");
 
 if(!isset($_SESSION["User"])){
     header("Location: Login.php"); 
   }
-  
+  $sql = "SELECT p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, r.ReplyContent, r.LikeCount, r.PostID FROM posts p JOIN replies r ON p.ID = r.PostID WHERE p.ID=? ORDER BY p.ID, r.PostID";
+    $stmt = $dbconn->prepare($sql);
+    $stmt->execute([$POS]);
+    $p = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -22,7 +26,16 @@ if(!isset($_SESSION["User"])){
 <body>
 <div class="row">
   <div class="col"><?php include "aside.php";?></div>
-  <div class="col"></div>
+  <div class="col Threads">
+    <div id="Thread-container">
+        <div id="ThreadContent">
+            <p><strong><?= htmlspecialchars($p["PostContent"]) ?></strong></p>
+        </div>
+      </div>
+      <button type="button" class="likebtn">Like</button>
+      <button type="button" class="replybtn">Reply</button>
+    </div>
+  </div>
   <div class="col"></div>
 </div>
 </body>
