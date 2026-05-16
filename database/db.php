@@ -17,7 +17,6 @@ try {
         $DB_USER,
         $DB_PASSWORD
     );
-    echo 'Connected to database'; // Remove after it works
     $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(PDOException $e){

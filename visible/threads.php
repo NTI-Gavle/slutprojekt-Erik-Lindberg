@@ -2,10 +2,14 @@
 session_start();
 require_once("../database/db.php");
 
+$_SESSION["POS"] = 1;
+
+$POS = $_SESSION["POS"];
+
 if(!isset($_SESSION["User"])){
     header("Location: Login.php"); 
   }
-  $sql = "SELECT p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, r.ReplyContent, r.LikeCount, r.PostID FROM posts p JOIN replies r ON p.ID = r.PostID WHERE p.ID=? ORDER BY p.ID, r.PostID";
+  $sql = "SELECT p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount AS PostLikeCount, r.ReplyContent, r.LikeCount AS ReplyLikeCount, r.PostID FROM posts p LEFT JOIN replies r ON p.ID = r.PostID WHERE p.ID=? ORDER BY p.ID, r.PostID";
     $stmt = $dbconn->prepare($sql);
     $stmt->execute([$POS]);
     $p = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,16 +31,19 @@ if(!isset($_SESSION["User"])){
 <div class="row">
   <div class="col"><?php include "aside.php";?></div>
   <div class="col Threads">
-    <div id="Thread-container">
+    <?php if ($p): ?>
+      <div id="Thread-container">
         <div id="ThreadContent">
-            <p><strong><?= htmlspecialchars($p["PostContent"]) ?></strong></p>
+          <p class="text-light"><?= htmlspecialchars($p["PostContent"]) ?></p>
         </div>
+        <button type="button" class="likebtn">Like</button>
+        <button type="button" class="replybtn">Reply</button>
       </div>
-      <button type="button" class="likebtn">Like</button>
-      <button type="button" class="replybtn">Reply</button>
-    </div>
+    <?php else: ?>
+      <p  class="text-light">No posts found.</p>
+    <?php endif; ?>
   </div>
-  <div class="col"></div>
+  <div class="col"><a href="Post.php">Post</a></div>
 </div>
 </body>
 </html>
