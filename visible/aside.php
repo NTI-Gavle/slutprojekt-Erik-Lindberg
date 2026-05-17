@@ -7,7 +7,6 @@
 </head>
 <body>
     <aside>
-        <a href="threads.php"><div id="logo">Logo</div></a>
         <a href="threads.php">  <div class="sidbtn text-info">🏠︎Threads</div></a>
         <a href="search.php">   <div class="sidbtn text-info">🔎︎Search</div></a>
         <a href="profile.php">  <div class="sidbtn text-info">☻Profile</div></a>
