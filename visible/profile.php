@@ -1,10 +1,18 @@
 <?php
 session_start();
+require("../database/db.php");
 
 if(!isset($_SESSION["User"])){
     header("Location: Login.php"); 
   }
   $user = unserialize($_SESSION["User"]);
+
+  $pid = $user["UID"];
+
+  $sql = "SELECT p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, u.Username, u.Bio FROM users u LEFT JOIN posts p ON u.UID = p.PosterID WHERE u.UID=? ORDER BY ID";
+  $stmt = $dbconn->prepare($sql);
+  $stmt->execute([$pid]);
+  $p = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +29,29 @@ if(!isset($_SESSION["User"])){
 <div class="row">
   <div class="col"><?php include "aside.php";?></div>
   <div class="col">
-    <div class="row"><div class="text-warning-emphasis">In future, pfp here</div></div>
     <div class="row"><?php echo '<h1 class="text-light">'.$user["Username"].'</h1>';?></div>
-    <div class="row"><div class="Bio text-light">In future, bio here</div></div>
-</div>
+    <?php if(count($p) > 0): ?>
+      <div class="row">
+        <div class="Bio text-light">
+          <?= htmlspecialchars($p[0]["Bio"]) ?>
+        </div>
+      </div>
+    <?php foreach($p as $post): ?>
+      <div class="ThreadContainer p-3 border-dark-subtle border-1 rounded">
+        <div class="ThreadContent">
+          <p class="text-light">
+            <?= htmlspecialchars($post["PostContent"]) ?>
+          </p>
+        </div>
+        <small class="text-secondary">
+          Poster: <?= htmlspecialchars($post["Username"]) ?>
+        </small>
+      </div>
+    <?php endforeach; ?>
+    <?php else: ?>
+      <p class="text-light">No posts made yet</p>
+    <?php endif; ?>
+  </div>
   <div class="col"></div>
 </div>
 </body>

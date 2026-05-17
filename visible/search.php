@@ -40,7 +40,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </form>
     <?php if(count($posts) > 0):?>
     <?php foreach($posts as $p):?>
-    <div class="ThreadContainer p-3 border rounded">
+    <div class="ThreadContainer p-3 border-1 border-dark-subtle rounded">
       <p class="text-light"><?=htmlspecialchars($p["PostContent"])?></p>
       <small class="text-secondary">Poster: <?=htmlspecialchars($p["Username"])?></small>
     </div>

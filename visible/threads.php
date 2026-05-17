@@ -2,17 +2,19 @@
 session_start();
 require_once("../database/db.php");
 
-$_SESSION["POS"] = 1;
+$posts = [];
 
-$POS = $_SESSION["POS"];
 
 if(!isset($_SESSION["User"])){
     header("Location: Login.php"); 
   }
-  $sql = "SELECT p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, r.ReplyContent, r.LikeCount AS ReplyLikeCount, r.PostID, u.Username FROM posts p LEFT JOIN replies r ON p.ID = r.PostID LEFT JOIN users u ON p.PosterID = u.UID WHERE p.ID=? ORDER BY p.ID, r.PostID, u.UID";
-    $stmt = $dbconn->prepare($sql);
-    $stmt->execute([$POS]);
-    $p = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  $pt = "";
+  $sql = "SELECT p.ID, p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, u.Username FROM posts p LEFT JOIN users u ON p.PosterID = u.UID WHERE PostContent LIKE ? ORDER BY ID";
+
+  $stmt = $dbconn->prepare($sql);
+  $stmt->execute(["%$pt%"]);
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -32,17 +34,19 @@ if(!isset($_SESSION["User"])){
 <div class="row">
   <div class="col Sidebar"><?php include "aside.php";?></div>
   <div class="col Threads">
-    <?php if ($p): ?>
-      <div class="ThreadContainer p-3 rounded">
-        <div class="ThreadContent">
-          <p class="text-light"><?= htmlspecialchars($p["PostContent"]) ?></p>
+    <?php if(count($posts) > 0):?>
+      <?php foreach($posts as $p):?>
+        <div class="ThreadContainer p-3 border-dark-subtle border-1 rounded">
+          <div class="ThreadContent">
+            <p class="text-light"><?= htmlspecialchars($p["PostContent"]) ?></p>
+          </div>
+          <small class="text-secondary">Poster: <?=htmlspecialchars($p["Username"])?></small>
         </div>
-        <small class="text-secondary">Poster: <?=htmlspecialchars($p["Username"])?></small>
-      </div>
-    <?php else: ?>
-      <p  class="text-light">No posts found.</p>
-    <?php endif; ?>
-  </div>
+      <?php endforeach;?>
+      <?php else:?>
+        <p class="text-light">No posts found.</p>
+      <?php endif;?>
+    </div>
   <div class="col"><a href="Post.php">Post</a></div>
 </div>
 </body>
