@@ -18,6 +18,8 @@ input{
     margin-top: 5vh;
     margin-bottom: 5vh;
     display: block;
+    width: 90%;
+    max-width: 350px;
 }
 input::placeholder{
     color: gray;
@@ -26,7 +28,8 @@ input::placeholder{
     height: auto;
     line-height: 200%;
     margin: auto;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     background-color: #142135;
 }
 .container{
@@ -34,6 +37,7 @@ input::placeholder{
     align-items: center;
     justify-content: center;
     height: 100%;
+    padding: 20px;
 }
 
 .Space{

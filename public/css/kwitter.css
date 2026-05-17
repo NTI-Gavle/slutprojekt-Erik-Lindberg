@@ -1,6 +1,7 @@
 body{
     background-color: #23223D !important;
     overflow-x: hidden;
+    color: white;
 }
 .sidbtn{
     justify-self: right;
@@ -22,6 +23,7 @@ a{
 }
 .Searchbar{
     background-color: #1E3447 !important;
+    width: 95%;
     margin-top: 15vh !important;
     line-height: 10vh;
     color: #f8f9fa;
@@ -44,7 +46,8 @@ button {
     cursor: pointer;
     overflow: hidden;
     outline: none;
-    color: white
+    color: white;
+    min-height: 40px;
 }
 ::-webkit-scrollbar {
 background-color: transparent;
@@ -62,6 +65,7 @@ input{
     margin-right: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
+    font-size: 16px;
 }
 input::placeholder{
     color: gray;
@@ -69,4 +73,78 @@ input::placeholder{
 .container{
     display: flex;
     align-items: center;
+}
+#Canvas {
+    border-radius: 50%;
+    background: radial-gradient(circle, #1E3447 0%, #231B35 60%, #23223D 100%);
+    box-shadow: 0 0 15px rgba(120, 90, 255, 0.25);
+}
+body.light-mode {
+    background-color: #f5f6fa !important;
+    color: #111 !important;
+}
+body.light-mode .sidbtn {
+    background-color: #ffffff !important;
+    color: #111 !important;
+    border: 1px solid #ddd;
+}
+
+body.light-mode .Threads {
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+}
+body.light-mode .ThreadContainer {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+body.light-mode .Bio {
+    background-color: #e9eef5 !important;
+    color: #111 !important;
+}
+body.light-mode input,
+body.light-mode #edbio,
+body.light-mode .Searchbar {
+    background-color: #ffffff !important;
+    color: #111 !important;
+    border: 1px solid #ccc;
+}
+body.light-mode input::placeholder {
+    color: #666;
+}
+body.light-mode button {
+    color: #111;
+}
+body.light-mode #Canvas {
+    background: radial-gradient(circle, #ffffff 0%, #eaeaea 60%, #f5f6fa 100%);
+}
+@media (max-width: 768px) {
+    aside {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .sidbtn {
+        width: auto;
+        height: auto;
+        margin-top: 5px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .Threads {
+        border-left: none;
+        border-right: none;
+        max-height: none;
+        padding: 10px;
+    }
+
+    .ThreadContainer {
+        margin: 10px 0;
+    }
+    #Canvas {
+        margin: 20px auto;
+        display: block;
+    }
 }
