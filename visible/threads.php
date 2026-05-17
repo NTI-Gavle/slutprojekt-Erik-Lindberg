@@ -9,8 +9,9 @@ if(!isset($_SESSION["User"])){
     header("Location: Login.php"); 
   }
 
+  $user = unserialize($_SESSION["User"]);
   $pt = "";
-  $sql = "SELECT p.ID, p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, u.Username FROM posts p LEFT JOIN users u ON p.PosterID = u.UID WHERE PostContent LIKE ? ORDER BY ID";
+  $sql = "SELECT p.ID, p.PosterID, p.PostContent, p.ReplyID, p.ReplyCount, p.LikeCount, u.Username FROM posts p LEFT JOIN users u ON p.PosterID = u.UID WHERE PostContent LIKE ? ORDER BY ID DESC";
 
   $stmt = $dbconn->prepare($sql);
   $stmt->execute(["%$pt%"]);
@@ -32,8 +33,17 @@ if(!isset($_SESSION["User"])){
 </head>
 <body>
 <div class="row">
-  <div class="col Sidebar"><?php include "aside.php";?></div>
-  <div class="col Threads">
+  <div class="col-2 Sidebar"><?php include "aside.php";?></div>
+  <div class="col-8 Threads">
+    <div class="container mt-3">
+      <div class="PostCont">
+        <form action="../database/PostLogic.php" method="POST">
+            <div class="Space"></div>
+            <input type="text" name="content" placeholder="What's on your mind?">
+            <button type="submit">Post</button>
+        </form>
+      </div>
+    </div>
     <?php if(count($posts) > 0):?>
       <?php foreach($posts as $p):?>
         <div class="ThreadContainer p-3 border-dark-subtle border-1 rounded">
@@ -41,13 +51,18 @@ if(!isset($_SESSION["User"])){
             <p class="text-light"><?= htmlspecialchars($p["PostContent"]) ?></p>
           </div>
           <small class="text-secondary">Poster: <?=htmlspecialchars($p["Username"])?></small>
+          <?php if ($user["UID"] == $p["PosterID"] || $user["UID"] == 1): ?>
+            <div class="mt-2">
+              <a  href="../database/DeletePostLogic.php?id=<?= $p["ID"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this post?')">Delete</a>
+        </div>
+    <?php endif; ?>
         </div>
       <?php endforeach;?>
       <?php else:?>
         <p class="text-light">No posts found.</p>
       <?php endif;?>
     </div>
-  <div class="col"><a href="Post.php">Post</a></div>
+  <div class="col-2"></div>
 </div>
 </body>
 </html>

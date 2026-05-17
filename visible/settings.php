@@ -21,9 +21,9 @@ if(!isset($_SESSION["User"])){
 </head>
 <body>
 <div class="row">
-  <div class="col"><?php include "aside.php";?></div>
-  <div class="col"></div>
-  <div class="col"></div>
+  <div class="col-2"><?php include "aside.php";?></div>
+  <div class="col-8"></div>
+  <div class="col-2"></div>
 </div>
 </body>
 </html>

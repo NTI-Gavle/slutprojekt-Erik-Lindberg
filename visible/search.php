@@ -33,8 +33,8 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 <div class="row">
-  <div class="col Sidebar"><?php include "aside.php";?></div>
-  <div class="col Threads">
+  <div class="col-2 Sidebar"><?php include "aside.php";?></div>
+  <div class="col-8 Threads">
     <form method="GET" action="">
       <input class="Searchbar form-control"  type="text" name="search" placeholder="Search" value="<?= htmlspecialchars($search)?>">
     </form>
@@ -49,9 +49,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <p class="text-light">No posts found.</p>
     <?php endif;?>
   </div>
-  <div class="col">
-    <a href="Post.php">Post</a>
-  </div>
+  <div class="col-2"></div>
 </div>
 
 </body>
