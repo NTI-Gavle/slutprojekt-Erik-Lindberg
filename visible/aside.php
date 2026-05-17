@@ -12,6 +12,7 @@
         <a href="search.php">   <div class="sidbtn text-info">🔎︎Search</div></a>
         <a href="profile.php">  <div class="sidbtn text-info">☻Profile</div></a>
         <a href="settings.php"> <div class="sidbtn text-info">⛭Settings</div></a>
+        <a href="Logout.php"> <div class="sidbtn text-danger">Logout</div></a>
     </aside>
 </body>
 </html>

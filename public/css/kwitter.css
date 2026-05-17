@@ -10,15 +10,9 @@ body{
     margin-top: 5vh;
     text-align: center;
     line-height: 6vh;
-    border-radius: 10px;
 }
-
 a{
     display: contents;
-    color: mediumaquamarine;
-}
-a:active{
-    color: greenyellow;
 }
 .Bio{
     background-color: #1E3447 !important;
