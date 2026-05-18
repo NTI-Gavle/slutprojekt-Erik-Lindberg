@@ -39,7 +39,7 @@ if(!isset($_SESSION["User"])){
       <div class="PostCont">
         <form action="../database/PostLogic.php" method="POST">
             <div class="Space"></div>
-            <input type="text" name="content" placeholder="What's on your mind?">
+            <input type="text" name="content" placeholder="What's on your mind?" maxlength="1000">
             <button type="submit">Post</button>
         </form>
       </div>
