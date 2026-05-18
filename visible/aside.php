@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <aside>
+        <a href="threads.php">  <div class="sidbtn text-info">🏠︎Threads</div></a>
+        <a href="search.php">   <div class="sidbtn text-info">🔎︎Search</div></a>
+        <a href="profile.php">  <div class="sidbtn text-info">☻Profile</div></a>
+        <a href="settings.php"> <div class="sidbtn text-info">⛭Settings</div></a>
+        <a href="Logout.php"> <div class="sidbtn text-danger">Logout</div></a>
+    </aside>
+</body>
+</html>

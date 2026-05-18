@@ -5,11 +5,11 @@ require_once __DIR__ . '/../config/env.php';
 $env = loadEnv(__DIR__ . '/../.env');
 
 
-$dbname = 'Your_DB_Name';
+$dbname = 'kwitter';
 $hostname = 'localhost';
 
 $DB_USER = $env['DB_USER'] ?? 'root';
-$DB_PASSWORD = $env['DB_PASS']?? 'root';
+$DB_PASSWORD = $env['DB_PASS']?? '1234';
 
 try {
     $dbconn = new PDO(
@@ -17,7 +17,6 @@ try {
         $DB_USER,
         $DB_PASSWORD
     );
-    echo 'Connected to database'; // Remove after it works
     $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(PDOException $e){
